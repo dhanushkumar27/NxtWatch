@@ -1,0 +1,123 @@
+import {Component} from 'react'
+
+import {Link} from 'react-router-dom'
+
+import {FiLogOut, FiMenu} from 'react-icons/fi'
+import {FaMoon, FaSun} from 'react-icons/fa'
+
+import BackgroundThemeContext from '../../context/BackgroundThemeContext/index'
+
+import './index.css'
+
+class Header extends Component {
+  state = {isMenuOpen: false}
+
+  render() {
+    const {isMenuOpen} = this.state
+
+    const onToggleMenue = () => {
+      this.setState(prevState => ({
+        isMenuOpen: !prevState.isMenuOpen,
+      }))
+    }
+
+    return (
+      <BackgroundThemeContext.Consumer>
+        {value => {
+          const {backgroundThemeIsDark, changeBackgroundTheme} = value
+
+          const backgroundTheme = backgroundThemeIsDark
+            ? 'backgroundTheme-dark-style'
+            : 'backgroundTheme-light-style'
+
+          const backgroundThemeLogout = backgroundThemeIsDark
+            ? 'backgroundTheme-logout-dark-style'
+            : 'backgroundTheme-logout-light-style'
+
+          return (
+            <div className={`header-main-container ${backgroundTheme}`}>
+              {backgroundThemeIsDark ? (
+                <img
+                  src="https://assets.ccbp.in/frontend/react-js/nxt-watch-logo-dark-theme-img.png"
+                  alt="website logo"
+                  className="header-website-logo-image"
+                />
+              ) : (
+                <img
+                  src="https://assets.ccbp.in/frontend/react-js/nxt-watch-logo-light-theme-img.png"
+                  alt="website logo"
+                  className="header-website-logo-image"
+                />
+              )}
+              <div className="header-icons-container">
+                {backgroundThemeIsDark ? (
+                  <button
+                    type="button"
+                    className={`header-icon-button ${backgroundTheme}`}
+                    onClick={() => changeBackgroundTheme()}
+                  >
+                    <FaSun className="header-icon" />
+                  </button>
+                ) : (
+                  <button
+                    type="button"
+                    className={`header-icon-button ${backgroundTheme}`}
+                    onClick={() => changeBackgroundTheme()}
+                  >
+                    <FaMoon className="header-icon" />
+                  </button>
+                )}
+
+                <nav className="navBar-mobile">
+                  <button
+                    type="button"
+                    className={`menu-btn ${backgroundTheme}`}
+                    onClick={onToggleMenue}
+                  >
+                    <FiMenu className="hamburgar-icon" />
+                  </button>
+                  {isMenuOpen && (
+                    <ul className="menu-list">
+                      <Link to="/" className="nav-link-item">
+                        <li className="menu-item">Home</li>
+                      </Link>
+                      <Link to="/trending" className="nav-link-item">
+                        <li className="menu-item">Trending</li>
+                      </Link>
+                      <Link to="/gaming" className="nav-link-item">
+                        <li className="menu-item">Gaming</li>
+                      </Link>
+                      <Link to="/saved-videos" className="nav-link-item">
+                        <li className="menu-item">Saved videos</li>
+                      </Link>
+                    </ul>
+                  )}
+                </nav>
+
+                <img
+                  src="https://assets.ccbp.in/frontend/react-js/nxt-watch-profile-img.png"
+                  alt="profile"
+                  className="header-profile-desktop"
+                />
+              </div>
+              <button
+                type="button"
+                className={`header-icon-button logout-mobile ${backgroundTheme}`}
+              >
+                <FiLogOut className="header-icon" />
+              </button>
+              <button
+                type="button"
+                className={`logout-button-desktop ${backgroundThemeLogout}`}
+              >
+                Logout
+              </button>
+            </div>
+          )
+        }}
+      </BackgroundThemeContext.Consumer>
+    )
+  }
+}
+
+export default Header

@@ -1,0 +1,16 @@
+.home-main-container {
+  display: flex;
+  background-color: #f8fafc;
+}
+.home-container {
+  height: 92vh;
+  width: 100%;
+  overflow: auto;
+  padding: 20px;
+}
+
+@media screen and (min-width: 1200px) {
+  .home-container {
+    width: 80%;
+  }
+}

@@ -1,0 +1,139 @@
+
+
+/*common for header and sidebar*/
+.backgroundTheme-dark-style {
+  background-color: #212121;
+  color: #ffffff;
+}
+.backgroundTheme-light-style {
+  background-color: #ffffff;
+  color: black;
+}
+
+/**/
+.header-main-container {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  font-family: 'Roboto';
+  border-bottom: 1px solid black;
+}
+.header-icons-container {
+  flex-grow: 1;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+.header-icon {
+  height: 25px;
+  width: 25px;
+}
+.header-icon-button {
+  padding: 0px;
+  margin-left: 10px;
+  background-color: transparent;
+  border: none;
+
+}
+/*nav bar - mobile*/
+.navBar-mobile {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: transparent;
+  border: none;
+  position: relative;
+  height: 30px;
+  width: 30px;
+  margin-left: 10px;
+}
+.menu-btn {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  font-size: 24px;
+  padding: 0px;
+}
+.hamburgar-icon {
+  height: 30px;
+  width: 30px;
+}
+.menu-list {
+  list-style-type: none;
+  padding: 0px;
+  width: 120px;
+  background-color: white;
+  position: absolute;
+  top: 50px;
+  right: 5px;
+  box-sizing: 0px 4px 16px rgba(0, 0, 0, 0.2);
+  border: 2px solid black;
+}
+.menu-item {
+  border-bottom: 1px solid black;
+  padding: 5px;
+}
+
+.nav-link-item {
+  text-decoration: none;
+  color: black;
+}
+
+/**/
+
+.header-website-logo-image {
+  height: 35px;
+  width: 130px;
+}
+.logout-button-desktop {
+  display: none;
+}
+.header-profile-desktop {
+  display: none;
+  height: 30px;
+  width: 30px;
+  margin-left: 20px;
+}
+@media screen and (min-width: 1200px) {
+  .header-icon {
+    height: 35px;
+    width: 35px;
+  }
+  .header-main-container {
+    padding: 20px;
+    padding-left: 40px;
+    padding-right: 40px;
+  }
+  .navBar-mobile {
+    display: none;
+  }
+  .header-profile-desktop {
+    display: flex;
+    height: 35px;
+    width: 35px;
+  }
+  .logout-mobile {
+    display: none;
+  }
+  .logout-button-desktop {
+    display: flex;
+    margin-left: 20px;
+    background-color: transparent;
+    padding: 8px;
+    padding-left: 12px;
+    padding-right: 12px;
+    border-radius: 6px;
+  }
+  .backgroundTheme-logout-dark-style {
+    color: white;
+    font-weight: bold;
+    border: 2px solid white;
+    background-color: transparent;
+  }
+  .backgroundTheme-logout-light-style {
+    color: #3b82f6;
+    font-weight: bold;
+    border: 2px solid #3b82f6;
+    background-color: transparent;
+  }
+}
