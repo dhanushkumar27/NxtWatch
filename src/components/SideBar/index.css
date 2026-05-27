@@ -10,20 +10,20 @@
   font-weight: bold;
 }
 .sidebar-contact-container {
-  padding: 30px;
+  padding: 20px;
 }
 .sidebar-contact-image {
-  height: 40px;
-  width: 40px;
-  margin-right: 15px;
+  height: 35px;
+  width: 35px;
+  margin-right: 12px;
 }
-@media screen and (min-width: 1200px) {
+@media screen and (min-width: 768px) {
   .sideBar-container {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     height: 92vh;
-    width: 20%;
+    width: 25%;
     border-right: 1px solid black;
   }
   .unorder-sideBar-container {
@@ -63,5 +63,25 @@
   }
   .sideBar-list-item p {
     margin: 0px;
+  }
+}
+
+@media screen and (min-width: 992px) and (max-width: 1200px) {
+  .sideBar-container {
+    width: 28%;
+  }
+  .sidebar-contact-image {
+    height: 40px;
+    width: 40px;
+    margin-right: 12px;
+  }
+  .sideBar-list-item p {
+    font-size: 24px;
+  }
+  .contact-us-heading {
+    font-size: 22px;
+  }
+  .contact-us-para {
+    font-size: 22px;
   }
 }

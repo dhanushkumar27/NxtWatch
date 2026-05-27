@@ -1,5 +1,3 @@
-
-
 /*common for header and sidebar*/
 .backgroundTheme-dark-style {
   background-color: #212121;
@@ -33,7 +31,6 @@
   margin-left: 10px;
   background-color: transparent;
   border: none;
-
 }
 /*nav bar - mobile*/
 .navBar-mobile {
@@ -94,7 +91,7 @@
   width: 30px;
   margin-left: 20px;
 }
-@media screen and (min-width: 1200px) {
+@media screen and (min-width: 768px) {
   .header-icon {
     height: 35px;
     width: 35px;
