@@ -1,3 +1,6 @@
+* {
+  border: 1px solid blue;
+}
 .home-main-container {
   display: flex;
   background-color: #f8fafc;
@@ -5,13 +8,98 @@
 .home-container {
   height: 92vh;
   width: 100%;
-  overflow: auto;
+  overflow-y: auto;
+  overflow-x: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.home-result-container {
+  width: 100%;
+
+  display: flex;
+  flex-direction: column;
+}
+.home-searchInput {
+  width: 90%;
+  margin: 10px;
+}
+.failure-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  margin: auto 0px;
+}
+.failure-image {
+  height: 200px;
+  width: 200px;
+}
+.failure-heading {
+  font-size: 18px;
+}
+.failure-para {
+  font-size: 14px;
+}
+.failure-button {
+  font-size: 14px;
+  color: white;
+  background-color: #3b82f6;
+  border: none;
+  padding: 10px;
+  border-radius: 8px;
+  width: 110px;
+  height: 38px;
+}
+.home-nxtWatchCard-container {
+  background-image: url('https://assets.ccbp.in/frontend/react-js/nxt-watch-banner-bg.png ');
+  background-size: cover;
+  width: 100%;
   padding: 20px;
+  margin: 5px;
+}
+.website-logo-card-image {
+  height: 40px;
+  width: 120px;
+}
+.get-it-now-button {
+  padding: 10px;
+}
+
+.videoCard-unorder-list {
+  list-style-type: none;
+  padding: 0px;
+  display: flex;
+  flex-wrap: wrap;
+  margin: 10px;
+}
+
+.loader-container {
+  display: flex;
+  justify-content: center;
+  margin: auto;
 }
 
 @media screen and (min-width: 768px) {
   .home-container {
     width: 75%;
+  }
+
+  .failure-image {
+    height: 350px;
+    width: 350px;
+  }
+  .failure-heading {
+    font-size: 26px;
+  }
+  .failure-para {
+    font-size: 18px;
+  }
+  .failure-button {
+    font-size: 18px;
+
+    padding: 10px;
+    border-radius: 8px;
   }
 }
 

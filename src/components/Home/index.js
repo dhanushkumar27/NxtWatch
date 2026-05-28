@@ -3,9 +3,13 @@ import {Component} from 'react'
 import {Redirect} from 'react-router-dom'
 
 import Cookies from 'js-cookie'
+import Loader from 'react-loader-spinner'
 
 import Header from '../Header'
 import SideBar from '../SideBar'
+
+import BackgroundThemeContext from '../../context/BackgroundThemeContext/index'
+import VideoCard from '../VideoCard'
 
 import './index.css'
 
@@ -17,19 +21,108 @@ const apiStatus = {
 }
 
 class Home extends Component {
-  state = {currentApiStaus: apiStatus.initial}
+  state = {
+    currentApiStaus: apiStatus.initial,
+    searchInput: '',
+    jobDetailsList: [],
+  }
 
   componentDidMount() {
     this.makeHomeVideosApi()
   }
 
-  makeHomeVideosApi = async () => {}
+  makeHomeVideosApi = async () => {
+    this.setState({currentApiStaus: apiStatus.in_progress})
+    const {searchInput} = this.state
+    const url = `https://apis.ccbp.in/videos/all?search=${searchInput}`
+    const token = Cookies.get('jwt_token')
+    const options = {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    }
+    const response = await fetch(url, options)
+    if (response.ok) {
+      const data = await response.json()
+      const {videos} = data
+      const updatedData = videos.map(eachVideo => ({
+        id: eachVideo.id,
+        title: eachVideo.title,
+        thumbnailUrl: eachVideo.thumbnail_url,
+        channel: {
+          name: eachVideo.channel.name,
+          profileImageUrl: eachVideo.channel.profile_image_url,
+        },
+        viewCount: eachVideo.view_count,
+        publishedAt: eachVideo.published_at,
+      }))
+      this.setState({
+        jobDetailsList: updatedData,
+        currentApiStaus: apiStatus.success,
+      })
+    } else {
+      this.setState({
+        currentApiStaus: apiStatus.failure,
+      })
+    }
+  }
 
-  renderSuccessView = () => <h1>s</h1>
+  onChangeSearchVideo = event =>
+    this.setState({searchInput: event.target.value}, this.makeHomeVideosApi)
 
-  renderFailureView = () => <h1>f</h1>
+  renderSuccessView = () => {
+    const {jobDetailsList} = this.state
+    return (
+      <ul className="videoCard-unorder-list">
+        {jobDetailsList.map(eachVideo => (
+          <VideoCard key={eachVideo.id} eachVideo={eachVideo} />
+        ))}
+      </ul>
+    )
+  }
 
-  renderLoadingView = () => <h1>l</h1>
+  renderFailureView = () => (
+    <BackgroundThemeContext.Consumer>
+      {value => {
+        const {backgroundThemeIsDark} = value
+        return (
+          <div className="failure-container">
+            {backgroundThemeIsDark ? (
+              <img
+                className="failure-image"
+                src="https://assets.ccbp.in/frontend/react-js/nxt-watch-failure-view-dark-theme-img.png"
+                alt="failure"
+              />
+            ) : (
+              <img
+                className="failure-image"
+                src="https://assets.ccbp.in/frontend/react-js/nxt-watch-failure-view-light-theme-img.png"
+                alt="failure"
+              />
+            )}
+            <h1 className="failure-heading">Oops! Something Went Wrong</h1>
+            <p className="failure-para">
+              We are having some trouble completing your request. Please try
+              again.
+            </p>
+            <button
+              className="failure-button"
+              type="button"
+              onClick={() => this.makeHomeVideosApi()}
+            >
+              Retry
+            </button>
+          </div>
+        )
+      }}
+    </BackgroundThemeContext.Consumer>
+  )
+
+  renderLoadingView = () => (
+    <div className="loader-container" data-testid="loader">
+      <Loader type="ThreeDots" color="blue" height="50" width="50" />
+    </div>
+  )
 
   homeSectionView = () => {
     const {currentApiStaus} = this.state
@@ -46,7 +139,23 @@ class Home extends Component {
     }
   }
 
+  nxtWatchHomeCard = () => (
+    <div className="home-nxtWatchCard-container">
+      <img
+        src="https://assets.ccbp.in/frontend/react-js/nxt-watch-logo-light-theme-img.png"
+        className="website-logo-card-image"
+        alt="website logo"
+      />
+      <p>Buy NxtWatch premium prepaid plans with UPI</p>
+      <button type="button" className="get-it-now-button">
+        GET IT NOW
+      </button>
+    </div>
+  )
+
   render() {
+    const {searchInput} = this.state
+
     const token = Cookies.get('jwt_token')
     if (token === undefined) {
       return <Redirect to="/login" />
@@ -57,7 +166,20 @@ class Home extends Component {
         <Header />
         <div className="home-main-container">
           <SideBar />
-          <div className="home-container">{this.homeSectionView()}</div>
+          <div className="home-container">
+            {this.nxtWatchHomeCard()}
+
+            <div className="home-result-container">
+              <input
+                type="text"
+                placeholder="Search"
+                onChange={this.onChangeSearchVideo}
+                value={searchInput}
+                className="home-searchInput"
+              />
+              {this.homeSectionView()}
+            </div>
+          </div>
         </div>
       </>
     )
