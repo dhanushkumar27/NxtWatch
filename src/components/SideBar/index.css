@@ -85,3 +85,9 @@
     font-size: 22px;
   }
 }
+
+@media screen and (min-width: 1200px) {
+  .sideBar-container {
+    width: 20%;
+  }
+}

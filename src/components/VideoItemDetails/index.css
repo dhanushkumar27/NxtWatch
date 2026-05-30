@@ -1,0 +1,16 @@
+.vidoeItem-main-container {
+  margin: 10px;
+  min-height: 92vh;
+}
+
+.vidoeItem-success-container {
+  margin: 10px;
+}
+
+.vidoeItem-result-container {
+  margin: 10px;
+}
+
+.react-player-component {
+  margin: 10px;
+}

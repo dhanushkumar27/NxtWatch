@@ -1,0 +1,32 @@
+.videoGamingCard-link {
+  width: 100%;
+  text-decoration: none;
+  margin-bottom: 10px;
+}
+
+.videoCard-thumbnailUrl-image {
+  width: 100%;
+  height: 200px;
+}
+
+.videoGamingCard-title {
+  font-size: 14px;
+  margin-right: 10px;
+  padding: 0px;
+}
+
+.videoGamingCard-videoDetails-card {
+  display: flex;
+  align-items: center;
+}
+@media screen and (min-width: 768px) {
+  .videoGamingCard-link {
+    width: 46%;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .videoGamingCard-link {
+    width: 30%;
+  }
+}

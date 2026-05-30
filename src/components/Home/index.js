@@ -1,7 +1,5 @@
 import {Component} from 'react'
 
-import {Redirect} from 'react-router-dom'
-
 import Cookies from 'js-cookie'
 import Loader from 'react-loader-spinner'
 
@@ -72,13 +70,26 @@ class Home extends Component {
 
   renderSuccessView = () => {
     const {jobDetailsList} = this.state
-    return (
-      <ul className="videoCard-unorder-list">
-        {jobDetailsList.map(eachVideo => (
-          <VideoCard key={eachVideo.id} eachVideo={eachVideo} />
-        ))}
-      </ul>
-    )
+
+    const successContent =
+      jobDetailsList.length === 0 ? (
+        <div className="no-videos-container">
+          <img
+            className="no-videos-image"
+            src="https://assets.ccbp.in/frontend/react-js/nxt-watch-no-search-results-img.png"
+            alt="no videos"
+          />
+          <h1>No Search Results Found</h1>
+          <p>Try different keywords or remove the search filter.</p>
+        </div>
+      ) : (
+        <ul className="videoCard-unorder-list">
+          {jobDetailsList.map(eachVideo => (
+            <VideoCard key={eachVideo.id} eachVideo={eachVideo} />
+          ))}
+        </ul>
+      )
+    return successContent
   }
 
   renderFailureView = () => (
@@ -146,7 +157,9 @@ class Home extends Component {
         className="website-logo-card-image"
         alt="website logo"
       />
-      <p>Buy NxtWatch premium prepaid plans with UPI</p>
+      <p className="home-watch-card-para">
+        Buy NxtWatch premium prepaid plans with UPI
+      </p>
       <button type="button" className="get-it-now-button">
         GET IT NOW
       </button>
@@ -156,30 +169,37 @@ class Home extends Component {
   render() {
     const {searchInput} = this.state
 
-    const token = Cookies.get('jwt_token')
-    if (token === undefined) {
-      return <Redirect to="/login" />
-    }
-
     return (
       <>
         <Header />
         <div className="home-main-container">
           <SideBar />
-          <div className="home-container">
-            {this.nxtWatchHomeCard()}
+          <BackgroundThemeContext.Consumer>
+            {value => {
+              const {backgroundThemeIsDark} = value
+              const backgroundColor = backgroundThemeIsDark
+                ? 'backgroundTheme-dark-style'
+                : 'backgroundTheme-light-style'
 
-            <div className="home-result-container">
-              <input
-                type="text"
-                placeholder="Search"
-                onChange={this.onChangeSearchVideo}
-                value={searchInput}
-                className="home-searchInput"
-              />
-              {this.homeSectionView()}
-            </div>
-          </div>
+              return (
+                <div className={`home-responsive-container ${backgroundColor}`}>
+                  {this.nxtWatchHomeCard()}
+                  <div className="home-container">
+                    <input
+                      type="text"
+                      placeholder="Search"
+                      onChange={this.onChangeSearchVideo}
+                      value={searchInput}
+                      className="home-searchInput"
+                    />
+                    <div className="home-result-container">
+                      {this.homeSectionView()}
+                    </div>
+                  </div>
+                </div>
+              )
+            }}
+          </BackgroundThemeContext.Consumer>
         </div>
       </>
     )

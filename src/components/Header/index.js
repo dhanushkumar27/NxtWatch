@@ -1,6 +1,7 @@
 import {Component} from 'react'
 
-import {Link} from 'react-router-dom'
+import {Link, withRouter} from 'react-router-dom'
+import Cookies from 'js-cookie'
 
 import {FiLogOut, FiMenu} from 'react-icons/fi'
 import {FaMoon, FaSun} from 'react-icons/fa'
@@ -11,6 +12,12 @@ import './index.css'
 
 class Header extends Component {
   state = {isMenuOpen: false}
+
+  onClickLogoutButton = () => {
+    Cookies.remove('jwt_token')
+    const {history} = this.props
+    history.replace('/login')
+  }
 
   render() {
     const {isMenuOpen} = this.state
@@ -102,12 +109,14 @@ class Header extends Component {
               </div>
               <button
                 type="button"
+                onClick={this.onClickLogoutButton}
                 className={`header-icon-button logout-mobile ${backgroundTheme}`}
               >
                 <FiLogOut className="header-icon" />
               </button>
               <button
                 type="button"
+                onClick={this.onClickLogoutButton}
                 className={`logout-button-desktop ${backgroundThemeLogout}`}
               >
                 Logout
@@ -120,4 +129,4 @@ class Header extends Component {
   }
 }
 
-export default Header
+export default withRouter(Header)

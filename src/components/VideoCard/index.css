@@ -1,5 +1,17 @@
-.videoCard-item {
-  margin: 5px;
+* {
+  border: 1px solid blue;
+}
+
+.videoCard-link {
+  text-decoration: none;
+  margin-bottom: 10px;
+}
+
+.linkText-dark {
+  color: white;
+}
+.linkText-light {
+  color: black;
 }
 
 .videoCard-thumbnailUrl-image {
@@ -40,7 +52,13 @@
 }
 
 @media screen and (min-width: 768px) {
-  .videoCard-item {
+  .videoCard-link {
+    width: 46%;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .videoCard-link {
     width: 30%;
   }
 }
