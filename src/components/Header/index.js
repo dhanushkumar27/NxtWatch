@@ -63,7 +63,7 @@ class Header extends Component {
                     className={`header-icon-button ${backgroundTheme}`}
                     onClick={() => changeBackgroundTheme()}
                   >
-                    <FaSun className="header-icon" />
+                    <FaSun className="header-icon" data-testid="theme" />
                   </button>
                 ) : (
                   <button
@@ -71,7 +71,7 @@ class Header extends Component {
                     className={`header-icon-button ${backgroundTheme}`}
                     onClick={() => changeBackgroundTheme()}
                   >
-                    <FaMoon className="header-icon" />
+                    <FaMoon className="header-icon" data-testid="theme" />
                   </button>
                 )}
 

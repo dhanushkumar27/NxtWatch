@@ -5,6 +5,9 @@ import ReactPlayer from 'react-player'
 import Cookies from 'js-cookie'
 import Loader from 'react-loader-spinner'
 
+import {AiOutlineLike, AiOutlineDislike} from 'react-icons/ai'
+import {MdPlaylistAdd} from 'react-icons/md'
+
 import Header from '../Header'
 import SideBar from '../SideBar'
 
@@ -22,7 +25,6 @@ const apiStatus = {
 class VideoItemDetails extends Component {
   state = {
     currentApiStaus: apiStatus.initial,
-    videoDetails: {},
   }
 
   componentDidMount() {
@@ -72,30 +74,71 @@ class VideoItemDetails extends Component {
     }
   }
 
-  renderSuccessView = () => {
-    const {videoDetailsObject} = this.state
-    const {videoDetails} = videoDetailsObject
-    const {
-      title,
-      videoUrl,
-      thumbnailUrl,
-      channel,
-      viewCount,
-      publishedAt,
-      description,
-    } = videoDetails
-    const {name, profileImageUrl, subscriberCount} = channel
+  renderSuccessView = () => (
+    <BackgroundThemeContext.Consumer>
+      {value => {
+        const {updateSavedVideosList} = value
+        const {videoDetailsObject} = this.state
+        const {videoDetails} = videoDetailsObject
+        const {
+          title,
+          videoUrl,
+          thumbnailUrl,
+          channel,
+          viewCount,
+          publishedAt,
+          description,
+        } = videoDetails
+        const {name, profileImageUrl, subscriberCount} = channel
+        return (
+          <div className="vidoeItemDetails-success-container">
+            <ReactPlayer
+              width="100%"
+              className="react-player-component"
+              url={videoUrl}
+            />
+            <div className="videoItemDetails-details-container">
+              <h1 className="videoItemDetails-heading">{title}</h1>
+              <div className="videoItemDetails-reaction-container">
+                <div className="reactions-on-video-container">
+                  <p>{viewCount}</p>
+                  <p>{publishedAt}</p>
+                </div>
 
-    return (
-      <div className="vidoeItem-success-container">
-        <ReactPlayer
-          width="100%"
-          className="react-player-component"
-          url={videoUrl}
-        />
-      </div>
-    )
-  }
+                <div className="reaction-buttons-container">
+                  <AiOutlineLike className="reaction-icon" />
+                  <p className="reaction-text">Like</p>
+                  <AiOutlineDislike className="reaction-icon" />
+                  <p className="reaction-text">Dislike</p>
+                  <MdPlaylistAdd className="reaction-icon" />
+                  <button
+                    onClick={() => updateSavedVideosList(videoDetails)}
+                    type="button"
+                    className="reaction-text"
+                  >
+                    Save
+                  </button>
+                </div>
+
+                <div className="channel-details-container">
+                  <img
+                    className="profile-image"
+                    src={profileImageUrl}
+                    alt="profile logo"
+                  />
+                  <div>
+                    <h1 className="channel-name">{name}</h1>
+                    <p>{subscriberCount} subscribers</p>
+                  </div>
+                </div>
+                <p>{description}</p>
+              </div>
+            </div>
+          </div>
+        )
+      }}
+    </BackgroundThemeContext.Consumer>
+  )
 
   renderFailureView = () => (
     <BackgroundThemeContext.Consumer>
@@ -159,7 +202,10 @@ class VideoItemDetails extends Component {
     return (
       <>
         <Header />
-        <div className="vidoeItem-main-container">
+        <div
+          className="vidoeItemDetails-main-container"
+          data-testid="videoItemDetails"
+        >
           <SideBar />
           <BackgroundThemeContext.Consumer>
             {value => {
@@ -170,7 +216,7 @@ class VideoItemDetails extends Component {
 
               return (
                 <div
-                  className={`vidoeItem-result-container ${backgroundColor}`}
+                  className={`vidoeItemDetails-result-container ${backgroundColor}`}
                 >
                   {this.videoDetailsSectionView()}
                 </div>

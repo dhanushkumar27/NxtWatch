@@ -92,13 +92,13 @@ class Gaming extends Component {
               <img
                 className="failure-image"
                 src="https://assets.ccbp.in/frontend/react-js/nxt-watch-failure-view-dark-theme-img.png"
-                alt="failure"
+                alt="failure view"
               />
             ) : (
               <img
                 className="failure-image"
                 src="https://assets.ccbp.in/frontend/react-js/nxt-watch-failure-view-light-theme-img.png"
-                alt="failure"
+                alt="failure view"
               />
             )}
             <h1 className="failure-heading">Oops! Something Went Wrong</h1>
@@ -144,7 +144,7 @@ class Gaming extends Component {
     return (
       <>
         <Header />
-        <div className="home-main-container">
+        <div className="home-main-container" data-testid="gaming">
           <SideBar />
           <BackgroundThemeContext.Consumer>
             {value => {

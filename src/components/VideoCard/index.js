@@ -9,8 +9,14 @@ const VideoCard = props => (
     {value => {
       const {backgroundThemeIsDark} = value
       const {eachVideo} = props
-      const {id, title, thumbnailUrl, channel, viewCount, publishedAt} =
-        eachVideo
+      const {
+        id,
+        title,
+        thumbnailUrl,
+        channel,
+        viewCount,
+        publishedAt,
+      } = eachVideo
       const {name, profileImageUrl} = channel
       const linkStyle = backgroundThemeIsDark
         ? 'linkText-dark'
@@ -21,13 +27,13 @@ const VideoCard = props => (
             <img
               className="videoCard-thumbnailUrl-image"
               src={thumbnailUrl}
-              alt="thumbnail"
+              alt="video thumbnail"
             />
             <div className="videoCard-videoDetails-card">
               <img
                 className="profile-image"
                 src={profileImageUrl}
-                alt="profile"
+                alt="channel logo"
               />
               <div className="videoCard-videoTitle-card">
                 <h1 className="videoCard-title">{title}</h1>

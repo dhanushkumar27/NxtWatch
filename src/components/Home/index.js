@@ -102,13 +102,13 @@ class Home extends Component {
               <img
                 className="failure-image"
                 src="https://assets.ccbp.in/frontend/react-js/nxt-watch-failure-view-dark-theme-img.png"
-                alt="failure"
+                alt="failure view"
               />
             ) : (
               <img
                 className="failure-image"
                 src="https://assets.ccbp.in/frontend/react-js/nxt-watch-failure-view-light-theme-img.png"
-                alt="failure"
+                alt="failure view"
               />
             )}
             <h1 className="failure-heading">Oops! Something Went Wrong</h1>
@@ -151,11 +151,11 @@ class Home extends Component {
   }
 
   nxtWatchHomeCard = () => (
-    <div className="home-nxtWatchCard-container">
+    <div className="home-nxtWatchCard-container" data-testid="banner">
       <img
         src="https://assets.ccbp.in/frontend/react-js/nxt-watch-logo-light-theme-img.png"
         className="website-logo-card-image"
-        alt="website logo"
+        alt="nxt watch logo"
       />
       <p className="home-watch-card-para">
         Buy NxtWatch premium prepaid plans with UPI
@@ -172,7 +172,7 @@ class Home extends Component {
     return (
       <>
         <Header />
-        <div className="home-main-container">
+        <div className="home-main-container" data-testid="home">
           <SideBar />
           <BackgroundThemeContext.Consumer>
             {value => {

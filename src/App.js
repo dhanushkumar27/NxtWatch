@@ -16,7 +16,7 @@ import './App.css'
 
 // Replace your code here
 class App extends Component {
-  state = {backgroundThemeIsDark: false}
+  state = {backgroundThemeIsDark: false, savedVideosList: []}
 
   changeBackgroundTheme = () => {
     this.setState(prevState => ({
@@ -24,13 +24,33 @@ class App extends Component {
     }))
   }
 
+  updateSavedVideosList = video => {
+    const {savedVideosList} = this.state
+    const isAlreadySaved = savedVideosList.some(
+      eachVideo => eachVideo.id === video.id,
+    )
+
+    if (isAlreadySaved) {
+      const updatedSavedVideosList = savedVideosList.filter(
+        eachVideo => eachVideo.id !== video.id,
+      )
+      this.setState({savedVideosList: updatedSavedVideosList})
+    } else {
+      this.setState(prevState => ({
+        savedVideosList: [...prevState.savedVideosList, video],
+      }))
+    }
+  }
+
   render() {
-    const {backgroundThemeIsDark} = this.state
+    const {backgroundThemeIsDark, savedVideosList} = this.state
     return (
       <BackgroundThemeContext.Provider
         value={{
           backgroundThemeIsDark,
           changeBackgroundTheme: this.changeBackgroundTheme,
+          savedVideosList,
+          updateSavedVideosList: this.updateSavedVideosList,
         }}
       >
         <Switch>
