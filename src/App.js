@@ -16,7 +16,12 @@ import './App.css'
 
 // Replace your code here
 class App extends Component {
-  state = {backgroundThemeIsDark: false, savedVideosList: []}
+  state = {
+    backgroundThemeIsDark: false,
+    savedVideosList: [],
+    likedVideosList: [],
+    dislikedVideosList: [],
+  }
 
   changeBackgroundTheme = () => {
     this.setState(prevState => ({
@@ -42,8 +47,59 @@ class App extends Component {
     }
   }
 
+  updateLikeVidosList = video => {
+    const {likedVideosList, dislikedVideosList} = this.state
+    const isAlreadySaved = likedVideosList.some(
+      eachVideo => eachVideo.id === video.id,
+    )
+
+    const updatedDislikesList = dislikedVideosList.filter(
+      eachVideo => eachVideo.id !== video.id,
+    )
+
+    if (isAlreadySaved) {
+      const updatedLikedVideosList = likedVideosList.filter(
+        eachVideo => eachVideo.id !== video.id,
+      )
+      this.setState({likedVideosList: updatedLikedVideosList})
+    } else {
+      this.setState(prevState => ({
+        likedVideosList: [...prevState.likedVideosList, video],
+        dislikedVideosList: updatedDislikesList,
+      }))
+    }
+  }
+
+  updateDislikeVidosList = video => {
+    const {dislikedVideosList, likedVideosList} = this.state
+    const isAlreadyDisliked = dislikedVideosList.some(
+      eachVideo => eachVideo.id === video.id,
+    )
+    const updatedLikesList = likedVideosList.filter(
+      eachVideo => eachVideo.id !== video.id,
+    )
+
+    if (isAlreadyDisliked) {
+      const updatedDislikedVideosList = dislikedVideosList.filter(
+        eachVideo => eachVideo.id !== video.id,
+      )
+      this.setState({dislikedVideosList: updatedDislikedVideosList})
+    } else {
+      this.setState(prevState => ({
+        dislikedVideosList: [...prevState.dislikedVideosList, video],
+        likedVideosList: updatedLikesList,
+      }))
+    }
+  }
+
   render() {
-    const {backgroundThemeIsDark, savedVideosList} = this.state
+    const {
+      backgroundThemeIsDark,
+      savedVideosList,
+      likedVideosList,
+      dislikedVideosList,
+    } = this.state
+
     return (
       <BackgroundThemeContext.Provider
         value={{
@@ -51,6 +107,10 @@ class App extends Component {
           changeBackgroundTheme: this.changeBackgroundTheme,
           savedVideosList,
           updateSavedVideosList: this.updateSavedVideosList,
+          likedVideosList,
+          updateLikeVidosList: this.updateLikeVidosList,
+          dislikedVideosList,
+          updateDislikeVidosList: this.updateDislikeVidosList,
         }}
       >
         <Switch>

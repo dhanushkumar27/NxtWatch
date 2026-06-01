@@ -1,3 +1,6 @@
+* {
+  border: 1px solid blue;
+}
 .videoCard-link {
   text-decoration: none;
   margin-bottom: 10px;
@@ -40,6 +43,7 @@
 
 .videoCard-channelName-container {
   display: flex;
+  width: 80%;
 }
 
 .videoCard-channelName-container p {
@@ -49,7 +53,8 @@
 
 @media screen and (min-width: 768px) {
   .videoCard-link {
-    width: 46%;
+    width: 48%;
+    margin-right: 5px;
   }
 }
 

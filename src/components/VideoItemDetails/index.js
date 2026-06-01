@@ -77,19 +77,47 @@ class VideoItemDetails extends Component {
   renderSuccessView = () => (
     <BackgroundThemeContext.Consumer>
       {value => {
-        const {updateSavedVideosList} = value
+        const {
+          updateSavedVideosList,
+          updateLikeVidosList,
+          updateDislikeVidosList,
+          savedVideosList,
+          likedVideosList,
+          dislikedVideosList,
+        } = value
+
         const {videoDetailsObject} = this.state
         const {videoDetails} = videoDetailsObject
         const {
           title,
           videoUrl,
-          thumbnailUrl,
           channel,
           viewCount,
           publishedAt,
           description,
         } = videoDetails
         const {name, profileImageUrl, subscriberCount} = channel
+
+        const isVideoLiked = likedVideosList.some(
+          eachVideo => eachVideo.id === videoDetails.id,
+        )
+
+        const isVideoDisiked = dislikedVideosList.some(
+          eachVideo => eachVideo.id === videoDetails.id,
+        )
+
+        const isVideoSaved = savedVideosList.some(
+          eachVideo => eachVideo.id === videoDetails.id,
+        )
+
+        const saveButtonText = isVideoSaved ? 'Saved' : 'Save'
+        const savedButtonStyle = isVideoSaved ? 'reaction-button-active' : ''
+
+        const likedButtonStyle = isVideoLiked ? 'reaction-button-active' : ''
+        const dislikedButtonStyle = isVideoDisiked
+          ? 'reaction-button-active'
+          : ''
+
         return (
           <div className="vidoeItemDetails-success-container">
             <ReactPlayer
@@ -106,17 +134,38 @@ class VideoItemDetails extends Component {
                 </div>
 
                 <div className="reaction-buttons-container">
-                  <AiOutlineLike className="reaction-icon" />
-                  <p className="reaction-text">Like</p>
-                  <AiOutlineDislike className="reaction-icon" />
-                  <p className="reaction-text">Dislike</p>
-                  <MdPlaylistAdd className="reaction-icon" />
+                  <AiOutlineLike
+                    className={`reaction-icon ${likedButtonStyle}`}
+                    onClick={() => updateLikeVidosList(videoDetails)}
+                  />
+                  <button
+                    onClick={() => updateLikeVidosList(videoDetails)}
+                    type="button"
+                    className={`reaction-button ${likedButtonStyle}`}
+                  >
+                    Like
+                  </button>
+                  <AiOutlineDislike
+                    className={`reaction-icon ${dislikedButtonStyle}`}
+                    onClick={() => updateDislikeVidosList(videoDetails)}
+                  />
+                  <button
+                    onClick={() => updateDislikeVidosList(videoDetails)}
+                    type="button"
+                    className={`reaction-button ${dislikedButtonStyle}`}
+                  >
+                    Dislike
+                  </button>
+                  <MdPlaylistAdd
+                    className={`reaction-icon ${savedButtonStyle}`}
+                    onClick={() => updateSavedVideosList(videoDetails)}
+                  />
                   <button
                     onClick={() => updateSavedVideosList(videoDetails)}
                     type="button"
-                    className="reaction-text"
+                    className={`reaction-button ${savedButtonStyle}`}
                   >
-                    Save
+                    {saveButtonText}
                   </button>
                 </div>
 

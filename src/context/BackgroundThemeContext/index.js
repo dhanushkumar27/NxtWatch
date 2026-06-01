@@ -5,6 +5,10 @@ const BackgroundThemeContext = React.createContext({
   changeBackgroundTheme: () => {},
   savedVideosList: [],
   updateSavedVideosList: () => {},
+  likedVideosList: [],
+  updateLikeVidosList: () => {},
+  dislikedVideosList: [],
+  updateDislikeVidosList: () => {},
 })
 
 export default BackgroundThemeContext
