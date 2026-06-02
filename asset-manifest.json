@@ -1,20 +1,23 @@
 {
   "files": {
-    "main.css": "/NxtWatch/static/css/main.9ddb3831.chunk.css",
-    "main.js": "/NxtWatch/static/js/main.95b4c3b6.chunk.js",
-    "main.js.map": "/NxtWatch/static/js/main.95b4c3b6.chunk.js.map",
+    "main.css": "/NxtWatch/static/css/main.42275bfc.chunk.css",
+    "main.js": "/NxtWatch/static/js/main.3e13b2c2.chunk.js",
+    "main.js.map": "/NxtWatch/static/js/main.3e13b2c2.chunk.js.map",
     "runtime-main.js": "/NxtWatch/static/js/runtime-main.5fa831ce.js",
     "runtime-main.js.map": "/NxtWatch/static/js/runtime-main.5fa831ce.js.map",
-    "static/js/2.60347c54.chunk.js": "/NxtWatch/static/js/2.60347c54.chunk.js",
-    "static/js/2.60347c54.chunk.js.map": "/NxtWatch/static/js/2.60347c54.chunk.js.map",
+    "static/css/2.16cdd538.chunk.css": "/NxtWatch/static/css/2.16cdd538.chunk.css",
+    "static/js/2.622a9158.chunk.js": "/NxtWatch/static/js/2.622a9158.chunk.js",
+    "static/js/2.622a9158.chunk.js.map": "/NxtWatch/static/js/2.622a9158.chunk.js.map",
     "index.html": "/NxtWatch/index.html",
-    "static/css/main.9ddb3831.chunk.css.map": "/NxtWatch/static/css/main.9ddb3831.chunk.css.map",
-    "static/js/2.60347c54.chunk.js.LICENSE.txt": "/NxtWatch/static/js/2.60347c54.chunk.js.LICENSE.txt"
+    "static/css/2.16cdd538.chunk.css.map": "/NxtWatch/static/css/2.16cdd538.chunk.css.map",
+    "static/css/main.42275bfc.chunk.css.map": "/NxtWatch/static/css/main.42275bfc.chunk.css.map",
+    "static/js/2.622a9158.chunk.js.LICENSE.txt": "/NxtWatch/static/js/2.622a9158.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.5fa831ce.js",
-    "static/js/2.60347c54.chunk.js",
-    "static/css/main.9ddb3831.chunk.css",
-    "static/js/main.95b4c3b6.chunk.js"
+    "static/css/2.16cdd538.chunk.css",
+    "static/js/2.622a9158.chunk.js",
+    "static/css/main.42275bfc.chunk.css",
+    "static/js/main.3e13b2c2.chunk.js"
   ]
 }
