@@ -26,7 +26,7 @@ const VideoGamingCard = props => (
               alt="thumbnail"
             />
             <div className="videoGamingCard-videoDetails-card ">
-              <h1 className="videoGamingCard-title">{title}</h1>
+              <p className="videoGamingCard-title">{title}</p>
               <p>{viewCount} Watching Worldwide</p>
             </div>
           </li>

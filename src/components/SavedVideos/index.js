@@ -35,6 +35,7 @@ const SavedVideos = () => (
                 </div>
               ) : (
                 <div>
+                  <h1>Saved Videos</h1>
                   <ul className="saved-videos-unorder-container">
                     {savedVideosList.map(eachVideo => (
                       <VideoCard key={eachVideo.id} eachVideo={eachVideo} />

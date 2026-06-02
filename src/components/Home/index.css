@@ -59,8 +59,15 @@
 .home-nxtWatchCard-container {
   background-image: url('https://assets.ccbp.in/frontend/react-js/nxt-watch-banner-bg.png ');
   background-size: cover;
+  display: flex;
+  flex-direction: column;
   padding: 20px;
   width: 100%;
+}
+.nxtWatch-close-icon {
+  align-self: flex-end;
+  color: black;
+  border: 1px solid black;
 }
 .website-logo-card-image {
   height: 40px;
@@ -72,6 +79,8 @@
 .get-it-now-button {
   color: black;
   padding: 10px;
+  width: 130px;
+  height: 35px;
 }
 
 .videoCard-unorder-list {

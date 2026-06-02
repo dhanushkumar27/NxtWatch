@@ -1,6 +1,7 @@
 .vidoeItemDetails-main-container {
   display: flex;
   background-color: #f8fafc;
+  font-family: 'Roboto';
 }
 .react-player-component {
   height: 100px;

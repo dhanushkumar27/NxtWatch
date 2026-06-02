@@ -91,7 +91,41 @@
   width: 30px;
   margin-left: 20px;
 }
+
+.popup-container {
+  margin-left: 10px;
+}
+.popup-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  border: none;
+}
+.popup-element-content {
+  width: 300px;
+  height: 150px;
+  border: none;
+  padding: 0px;
+}
+.trigger-button {
+  color: white;
+  background-color: #3b82f6;
+  padding: 10px;
+  border: none;
+  border-radius: 6px;
+  font-weight: bold;
+  margin-right: 20px;
+}
+.header-logo-link {
+  text-decoration: none;
+  color: none;
+}
 @media screen and (min-width: 768px) {
+  .popup-container {
+    margin-left: 20px;
+  }
   .header-icon {
     height: 35px;
     width: 35px;
@@ -114,7 +148,7 @@
   }
   .logout-button-desktop {
     display: flex;
-    margin-left: 20px;
+
     background-color: transparent;
     padding: 8px;
     padding-left: 12px;

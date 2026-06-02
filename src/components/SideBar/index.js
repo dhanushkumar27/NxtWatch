@@ -128,7 +128,7 @@ const SideBar = props => {
               </Link>
             </ul>
             <div className="sidebar-contact-container">
-              <h1 className="contact-us-heading">CONTACT US</h1>
+              <p className="contact-us-heading">CONTACT US</p>
               <div>
                 <img
                   src="https://assets.ccbp.in/frontend/react-js/nxt-watch-facebook-logo-img.png"
@@ -142,12 +142,12 @@ const SideBar = props => {
                 />
                 <img
                   src="https://assets.ccbp.in/frontend/react-js/nxt-watch-linked-in-logo-img.png"
-                  alt="twitter logo"
+                  alt="linked in logo"
                   className="sidebar-contact-image"
                 />
               </div>
               <p className="contact-us-para">
-                Enjoy! Now you can see your recommendations!
+                Enjoy! Now to see your channels and recommendations!
               </p>
             </div>
           </div>

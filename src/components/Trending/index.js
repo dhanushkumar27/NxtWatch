@@ -78,11 +78,14 @@ class Trending extends Component {
           <p>Try different keywords or remove the search filter.</p>
         </div>
       ) : (
-        <ul className="videoCard-unorder-list">
-          {trendingDetailsList.map(eachVideo => (
-            <VideoCard key={eachVideo.id} eachVideo={eachVideo} />
-          ))}
-        </ul>
+        <div>
+          <h1>Saved Videos</h1>
+          <ul className="videoCard-unorder-list">
+            {trendingDetailsList.map(eachVideo => (
+              <VideoCard key={eachVideo.id} eachVideo={eachVideo} />
+            ))}
+          </ul>
+        </div>
       )
     return successContent
   }

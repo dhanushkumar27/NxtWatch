@@ -36,7 +36,7 @@ const VideoCard = props => (
                 alt="channel logo"
               />
               <div className="videoCard-videoTitle-card">
-                <h1 className="videoCard-title">{title}</h1>
+                <p className="videoCard-title">{title}</p>
                 <div className="videoCard-channelName-container">
                   <p>{name}</p>
                   <p>{viewCount}</p>

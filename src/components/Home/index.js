@@ -1,5 +1,7 @@
 import {Component} from 'react'
 
+import {AiOutlineClose} from 'react-icons/ai'
+
 import Cookies from 'js-cookie'
 import Loader from 'react-loader-spinner'
 
@@ -23,11 +25,14 @@ class Home extends Component {
     currentApiStaus: apiStatus.initial,
     searchInput: '',
     jobDetailsList: [],
+    showNxtWatchCard: true,
   }
 
   componentDidMount() {
     this.makeHomeVideosApi()
   }
+
+  onClickCloseNxtWatchCard = () => this.setState({showNxtWatchCard: false})
 
   makeHomeVideosApi = async () => {
     this.setState({currentApiStaus: apiStatus.in_progress})
@@ -80,7 +85,14 @@ class Home extends Component {
             alt="no videos"
           />
           <h1>No Search Results Found</h1>
-          <p>Try different keywords or remove the search filter.</p>
+          <p>Try different key words or remove search filter</p>
+          <button
+            className="failure-button"
+            type="button"
+            onClick={() => this.makeHomeVideosApi()}
+          >
+            Retry
+          </button>
         </div>
       ) : (
         <ul className="videoCard-unorder-list">
@@ -150,21 +162,32 @@ class Home extends Component {
     }
   }
 
-  nxtWatchHomeCard = () => (
-    <div className="home-nxtWatchCard-container" data-testid="banner">
-      <img
-        src="https://assets.ccbp.in/frontend/react-js/nxt-watch-logo-light-theme-img.png"
-        className="website-logo-card-image"
-        alt="nxt watch logo"
-      />
-      <p className="home-watch-card-para">
-        Buy NxtWatch premium prepaid plans with UPI
-      </p>
-      <button type="button" className="get-it-now-button">
-        GET IT NOW
-      </button>
-    </div>
-  )
+  nxtWatchHomeCard = () => {
+    const {showNxtWatchCard} = this.state
+
+    return (
+      <>
+        {showNxtWatchCard && (
+          <div className="home-nxtWatchCard-container" data-testid="banner">
+            <AiOutlineClose
+              data-testid="close"
+              className="nxtWatch-close-icon"
+              onClick={() => this.onClickCloseNxtWatchCard()}
+            />
+            <img
+              src="https://assets.ccbp.in/frontend/react-js/nxt-watch-logo-light-theme-img.png"
+              className="website-logo-card-image"
+              alt="nxt watch logo"
+            />
+            <p className="home-watch-card-para">Buy Nxt Watch Premium</p>
+            <button type="button" className="get-it-now-button">
+              GET IT NOW
+            </button>
+          </div>
+        )}
+      </>
+    )
+  }
 
   render() {
     const {searchInput} = this.state

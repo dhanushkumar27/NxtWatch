@@ -1,5 +1,9 @@
 import {Component} from 'react'
 
+import Popup from 'reactjs-popup'
+
+import 'reactjs-popup/dist/index.css'
+
 import {Link, withRouter} from 'react-router-dom'
 import Cookies from 'js-cookie'
 
@@ -44,17 +48,21 @@ class Header extends Component {
           return (
             <div className={`header-main-container ${backgroundTheme}`}>
               {backgroundThemeIsDark ? (
-                <img
-                  src="https://assets.ccbp.in/frontend/react-js/nxt-watch-logo-dark-theme-img.png"
-                  alt="website logo"
-                  className="header-website-logo-image"
-                />
+                <Link className="header-logo-link" to="/">
+                  <img
+                    src="https://assets.ccbp.in/frontend/react-js/nxt-watch-logo-dark-theme-img.png"
+                    alt="website logo"
+                    className="header-website-logo-image"
+                  />
+                </Link>
               ) : (
-                <img
-                  src="https://assets.ccbp.in/frontend/react-js/nxt-watch-logo-light-theme-img.png"
-                  alt="website logo"
-                  className="header-website-logo-image"
-                />
+                <Link className="header-logo-link" to="/">
+                  <img
+                    src="https://assets.ccbp.in/frontend/react-js/nxt-watch-logo-light-theme-img.png"
+                    alt="website logo"
+                    className="header-website-logo-image"
+                  />
+                </Link>
               )}
               <div className="header-icons-container">
                 {backgroundThemeIsDark ? (
@@ -107,20 +115,51 @@ class Header extends Component {
                   className="header-profile-desktop"
                 />
               </div>
-              <button
-                type="button"
-                onClick={this.onClickLogoutButton}
-                className={`header-icon-button logout-mobile ${backgroundTheme}`}
-              >
-                <FiLogOut className="header-icon" />
-              </button>
-              <button
-                type="button"
-                onClick={this.onClickLogoutButton}
-                className={`logout-button-desktop ${backgroundThemeLogout}`}
-              >
-                Logout
-              </button>
+
+              <div className="popup-container">
+                <Popup
+                  modal
+                  className="popup-element"
+                  trigger={
+                    <div>
+                      <button
+                        type="button"
+                        className={`logout-button-desktop ${backgroundThemeLogout}`}
+                      >
+                        Logout
+                      </button>
+                      <button
+                        type="button"
+                        className={`header-icon-button logout-mobile ${backgroundTheme}`}
+                      >
+                        <FiLogOut className="header-icon" />
+                      </button>
+                    </div>
+                  }
+                >
+                  {close => (
+                    <div className={`popup-card ${backgroundTheme}`}>
+                      <p>Are you sure, you want to logout</p>
+                      <div>
+                        <button
+                          type="button"
+                          className="trigger-button"
+                          onClick={() => close()}
+                        >
+                          Cancel
+                        </button>
+                        <button
+                          type="button"
+                          className="trigger-button"
+                          onClick={this.onClickLogoutButton}
+                        >
+                          Confirm
+                        </button>
+                      </div>
+                    </div>
+                  )}
+                </Popup>
+              </div>
             </div>
           )
         }}

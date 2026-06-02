@@ -126,7 +126,7 @@ class VideoItemDetails extends Component {
               url={videoUrl}
             />
             <div className="videoItemDetails-details-container">
-              <h1 className="videoItemDetails-heading">{title}</h1>
+              <p className="videoItemDetails-heading">{title}</p>
               <div className="videoItemDetails-reaction-container">
                 <div className="reactions-on-video-container">
                   <p>{viewCount}</p>
@@ -176,7 +176,7 @@ class VideoItemDetails extends Component {
                     alt="profile logo"
                   />
                   <div>
-                    <h1 className="channel-name">{name}</h1>
+                    <p className="channel-name">{name}</p>
                     <p>{subscriberCount} subscribers</p>
                   </div>
                 </div>

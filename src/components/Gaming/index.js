@@ -73,11 +73,14 @@ class Gaming extends Component {
           <p>Try different keywords or remove the search filter.</p>
         </div>
       ) : (
-        <ul className="videoCard-unorder-list">
-          {trendingDetailsList.map(eachVideo => (
-            <VideoGamingCard key={eachVideo.id} eachVideo={eachVideo} />
-          ))}
-        </ul>
+        <div>
+          <h1>Gaming</h1>
+          <ul className="videoCard-unorder-list">
+            {trendingDetailsList.map(eachVideo => (
+              <VideoGamingCard key={eachVideo.id} eachVideo={eachVideo} />
+            ))}
+          </ul>
+        </div>
       )
     return successContent
   }
