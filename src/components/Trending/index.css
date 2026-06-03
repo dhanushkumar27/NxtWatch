@@ -1,0 +1,15 @@
+.navbar-trending-container {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+}
+.navbar-trending-container h1 {
+  margin: 0px;
+  font-size: 24px;
+}
+.sections-icons {
+  margin-right: 20px;
+  color: red;
+  height: 30px;
+  width: 30px;
+}

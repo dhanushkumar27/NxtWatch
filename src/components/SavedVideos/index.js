@@ -1,6 +1,9 @@
+import {MdPlaylistAdd} from 'react-icons/md'
+
 import Header from '../Header'
 import SideBar from '../SideBar'
 import VideoCard from '../VideoCard/index'
+
 import BackgroundThemeContext from '../../context/BackgroundThemeContext/index'
 
 import './index.css'
@@ -15,7 +18,7 @@ const SavedVideos = () => (
         : 'backgroundTheme-light-style'
 
       return (
-        <>
+        <div className="section-container">
           <Header />
           <div
             className={`savedVideos-main-container ${backgroundColor}`}
@@ -35,7 +38,10 @@ const SavedVideos = () => (
                 </div>
               ) : (
                 <div>
-                  <h1>Saved Videos</h1>
+                  <div className="navbar-trending-container">
+                    <MdPlaylistAdd className="sections-icons" />
+                    <h1>Saved Videos</h1>
+                  </div>
                   <ul className="saved-videos-unorder-container">
                     {savedVideosList.map(eachVideo => (
                       <VideoCard key={eachVideo.id} eachVideo={eachVideo} />
@@ -45,7 +51,7 @@ const SavedVideos = () => (
               )}
             </div>
           </div>
-        </>
+        </div>
       )
     }}
   </BackgroundThemeContext.Consumer>

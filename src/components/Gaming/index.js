@@ -3,6 +3,8 @@ import {Component} from 'react'
 import Cookies from 'js-cookie'
 import Loader from 'react-loader-spinner'
 
+import {IoGameController} from 'react-icons/io5'
+
 import Header from '../Header'
 import SideBar from '../SideBar'
 
@@ -74,7 +76,10 @@ class Gaming extends Component {
         </div>
       ) : (
         <div>
-          <h1>Gaming</h1>
+          <div className="navbar-trending-container">
+            <IoGameController className="sections-icons" />
+            <h1>Gaming</h1>
+          </div>
           <ul className="videoCard-unorder-list">
             {trendingDetailsList.map(eachVideo => (
               <VideoGamingCard key={eachVideo.id} eachVideo={eachVideo} />
@@ -145,7 +150,7 @@ class Gaming extends Component {
 
   render() {
     return (
-      <>
+      <div className="section-container">
         <Header />
         <div className="home-main-container" data-testid="gaming">
           <SideBar />
@@ -168,7 +173,7 @@ class Gaming extends Component {
             }}
           </BackgroundThemeContext.Consumer>
         </div>
-      </>
+      </div>
     )
   }
 }

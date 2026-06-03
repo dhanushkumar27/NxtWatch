@@ -119,7 +119,7 @@ class VideoItemDetails extends Component {
           : ''
 
         return (
-          <div className="vidoeItemDetails-success-container">
+          <div className="videoItemDetails-success-container">
             <ReactPlayer
               width="100%"
               className="react-player-component"
@@ -249,10 +249,10 @@ class VideoItemDetails extends Component {
 
   render() {
     return (
-      <>
+      <div className="section-container">
         <Header />
         <div
-          className="vidoeItemDetails-main-container"
+          className="videoItemDetails-main-container"
           data-testid="videoItemDetails"
         >
           <SideBar />
@@ -273,7 +273,7 @@ class VideoItemDetails extends Component {
             }}
           </BackgroundThemeContext.Consumer>
         </div>
-      </>
+      </div>
     )
   }
 }

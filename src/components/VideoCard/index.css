@@ -3,6 +3,9 @@
   margin-bottom: 10px;
   width: 100%;
 }
+.videoCard-item {
+  width: 100%;
+}
 
 .linkText-dark {
   color: white;

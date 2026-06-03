@@ -3,6 +3,8 @@ import {Component} from 'react'
 import Cookies from 'js-cookie'
 import Loader from 'react-loader-spinner'
 
+import {FaFire} from 'react-icons/fa'
+
 import Header from '../Header'
 import SideBar from '../SideBar'
 
@@ -79,7 +81,11 @@ class Trending extends Component {
         </div>
       ) : (
         <div>
-          <h1>Saved Videos</h1>
+          <div className="navbar-trending-container">
+            <FaFire className="sections-icons" />
+            <h1>Trending Videos</h1>
+          </div>
+
           <ul className="videoCard-unorder-list">
             {trendingDetailsList.map(eachVideo => (
               <VideoCard key={eachVideo.id} eachVideo={eachVideo} />
@@ -150,7 +156,7 @@ class Trending extends Component {
 
   render() {
     return (
-      <>
+      <div className="section-container">
         <Header />
         <div className="home-main-container" data-testid="trending">
           <SideBar />
@@ -173,7 +179,7 @@ class Trending extends Component {
             }}
           </BackgroundThemeContext.Consumer>
         </div>
-      </>
+      </div>
     )
   }
 }

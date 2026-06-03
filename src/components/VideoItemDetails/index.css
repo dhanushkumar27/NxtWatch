@@ -1,23 +1,22 @@
-.vidoeItemDetails-main-container {
+.videoItemDetails-main-container {
   display: flex;
   background-color: #f8fafc;
   font-family: 'Roboto';
+  flex-grow: 1;
+  overflow-y: auto;
+}
+.vidoeItemDetails-result-container {
+  flex: 1;
+  overflow-y: auto;
 }
 .react-player-component {
   height: 100px;
 }
 
-.vidoeItemDetails-result-container {
-  flex-grow: 1;
+.videoItemDetails-success-container {
+  flex: 1;
   overflow-y: scroll;
-
-  height: 95vh;
-}
-
-.videoItemDetails-details-container {
-  display: flex;
-  flex-direction: column;
-  padding: 20px;
+  margin: 10px;
 }
 .videoItemDetails-heading {
   font-size: 14px;
@@ -63,10 +62,4 @@
 }
 .channel-name {
   font-size: 14px;
-}
-
-@media screen and (min-width: 1200px) {
-  .vidoeItemDetails-result-container {
-    padding: 20px;
-  }
 }

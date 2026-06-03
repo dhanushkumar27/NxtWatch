@@ -1,17 +1,15 @@
 .savedVideos-main-container {
-  min-height: 92vh;
   display: flex;
+  flex: 1;
+  overflow-y: scroll;
 }
-
 .savedVideos-container {
-  min-height: 92vh;
-  flex-grow: 1;
+  padding: 20px;
 }
 
 .saved-videos-unorder-container {
   list-style-type: none;
   padding: 0px;
-  margin: 10px;
   display: flex;
   flex-wrap: wrap;
 }
@@ -28,4 +26,22 @@
 .no-saved-videos-image {
   height: 200px;
   width: 200px;
+}
+
+@media screen and (min-width: 768px) {
+  .savedVideos-container {
+    width: 75%;
+  }
+}
+
+@media screen and (min-width: 992px) and (max-width: 1200px) {
+  .savedVideos-container {
+    width: 72%;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .savedVideos-container {
+    width: 80%;
+  }
 }

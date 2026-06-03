@@ -1,7 +1,14 @@
+.section-container {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
 .home-main-container {
   display: flex;
   background-color: #f8fafc;
-  height: 92vh;
+  flex: 1;
+  overflow-y: scroll;
 }
 .home-responsive-container {
   width: 100%;
@@ -19,7 +26,6 @@
   padding: 10px;
 }
 .home-result-container {
-  min-height: 70vh;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -89,6 +95,8 @@
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
+  width: 100%;
+  flex: 1;
 }
 
 .loader-container {

@@ -193,7 +193,7 @@ class Home extends Component {
     const {searchInput} = this.state
 
     return (
-      <>
+      <div className="section-container">
         <Header />
         <div className="home-main-container" data-testid="home">
           <SideBar />
@@ -224,7 +224,7 @@ class Home extends Component {
             }}
           </BackgroundThemeContext.Consumer>
         </div>
-      </>
+      </div>
     )
   }
 }
