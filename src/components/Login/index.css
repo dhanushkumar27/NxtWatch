@@ -68,6 +68,11 @@
   font-weight: bold;
   font-size: 18px;
 }
+.error-text-para {
+  color: red;
+  font-size: 12px;
+  margin: 0px;
+}
 @media screen and (min-width: 768px) {
   .login-container {
     width: 50%;

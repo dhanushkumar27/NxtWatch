@@ -68,7 +68,7 @@ class Login extends Component {
             className="login-input-element"
             id="username"
             type="text"
-            placeholder="Username"
+            placeholder="rahul"
             onChange={this.onChangeUsername}
           />
           <label htmlFor="password" className="login-label-element">
@@ -78,7 +78,7 @@ class Login extends Component {
             className="login-input-element"
             id="password"
             type={showPasswordFormate}
-            placeholder="Password"
+            placeholder="rahul@2021"
             onChange={this.onChangePassword}
           />
           <div className="show-password-container">
@@ -94,7 +94,7 @@ class Login extends Component {
             <button className="login-button" type="submit">
               Login
             </button>
-            {error && <p>{errorText}</p>}
+            {error && <p className="error-text-para">{errorText}</p>}
           </div>
         </form>
       </div>
